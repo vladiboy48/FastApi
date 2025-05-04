@@ -1,3 +1,4 @@
+## Тест коммита
 import uvicorn
 import os
 from fastapi import FastAPI
