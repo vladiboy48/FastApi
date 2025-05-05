@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "fa40e6d3-fdee-475f-b5c5-be9ac9f34109",
+		"name": "FAST API postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36952680"
+	},
+	"item": [
+		{
+			"name": "get_with_path (lk)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:5000/persons/2"
+			},
+			"response": []
+		},
+		{
+			"name": "get_with_params",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/persons/?pers_id=2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"persons",
+						""
+					],
+					"query": [
+						{
+							"key": "role",
+							"value": "admin",
+							"disabled": true
+						},
+						{
+							"key": "pers_id",
+							"value": "2"
+						},
+						{
+							"key": "fio",
+							"value": "Корнеев.С.С.",
+							"disabled": true
+						},
+						{
+							"key": "login",
+							"value": "korneevss",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "1337",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admins_list_get",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://127.0.0.1:5000/persons/admins"
+			},
+			"response": []
+		},
+		{
+			"name": "insert_person_json",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fio\": \"dada\",\r\n    \"login\": \"dada\",\r\n    \"password\":\"1337\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:5000/insert_person"
+			},
+			"response": []
+		},
+		{
+			"name": "delete_json",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"enter_login\": \"dada\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:5000/delete_person"
+			},
+			"response": []
+		},
+		{
+			"name": "delete_path",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://127.0.0.1:5000/delete_person/dada"
+			},
+			"response": []
+		}
+	]
+}

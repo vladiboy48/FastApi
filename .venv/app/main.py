@@ -1,10 +1,11 @@
 ## Тест коммита
 import uvicorn
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
+from fastapi.responses import JSONResponse,FileResponse,HTMLResponse
 from typing import Optional
 from transform_json import json_to_dict_list, temp_json, delete_json
-from base import reqDictn
+from base import reqDictn, reqSimp
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=5000, log_level="info")
@@ -59,3 +60,50 @@ def get_one_person(pers_id: int):
             return_list.append(person)
     delete_json(path_to_json)
     return return_list
+
+@app.post("/persons/admins")  # Лист админов.
+def get_admins_list():
+    persons = reqDictn("""Select * from persons where role = 'admin'""")
+    path_to_json = temp_json(persons, "temp_table_persons.txt")
+    return_list = []
+    for person in persons:
+        return_list.append(person)
+    delete_json(path_to_json)
+    return return_list
+
+@app.post("/insert_person")
+def add_new_person(data=Body()): #Body задаётся через постман, в виде json - ниже парсим его в привычные переменные
+    fio = data["fio"]
+    login = data["login"]
+    pwd = data["password"]
+    try:
+        script = ("""insert into public.persons (fio,login,password) values ('%s', '%s', '%s');""" % (fio, login, pwd))
+        reqSimp(script)
+    except Exception as owibka:
+        reg_status = ('--Задайте другой логин -, такой уже существует--')
+    else:
+        reg_status = ('Регистрация прошла успешно!')
+    return reg_status
+
+@app.delete("/delete_person")
+def delete_person(data=Body()):
+    enter_login = data["enter_login"]
+    try:
+        script = ("""delete from public.persons where login like '%s';""" % (enter_login))
+        reqSimp(script)
+    except Exception as owibka:
+        del_result = '--Задайте другой логин - такого пользователя не существует!--'
+    else:
+        del_result = 'Удаление прошло успешно!'
+    return del_result
+
+@app.delete("/delete_person/{enter_login}") #Удаление пользовователя - логин передаём в прямо в пути
+def delete_person(enter_login):
+    try:
+        script = ("""delete from public.persons where login like '%s';""" % (enter_login))
+        reqSimp(script)
+    except Exception as owibka:
+        del_result = '--Задайте другой логин - такого пользователя не существует!--'
+    else:
+        del_result = 'Удаление прошло успешно!'
+    return del_result

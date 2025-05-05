@@ -29,6 +29,13 @@ def reqDictn(script):
     cur.close()
     return result
 
+def reqSimp(script):
+    connection = connect()
+    cur = connection.cursor()
+    cur.execute(script)
+    connection.close()
+    cur.close()
+
 """
 Остальные виды запросов закоменчены на будущее
 """
@@ -41,11 +48,4 @@ def reqDictn(script):
 #     cur.close()
 #     return result
 
-# def reqSimp(script):
-#     connection = connect()
-#     cur = connection.cursor()
-#     print(cur)
-#     cur.execute(script)
-#     print(cur.execute(script))
-#     connection.close()
-#     cur.close()
+
