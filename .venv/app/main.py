@@ -12,13 +12,13 @@ if __name__ == "__main__":
 app = FastAPI()
 
 
-@app.get("/persons")
+@app.get("/persons") #общий эндопоинт в котором прописаны все фильтры
 def get_all_persons(pers_id: Optional[int] = None,
                     fio: Optional[str] = None,
                     login: Optional[str] = None,
                     password: Optional[str] = None,
                     role: Optional[str] = None
-                    ):  # Optional, чтобы не обязательно былдо передавать параметр, но если да то инт нужен
+                    ):
     persons = reqDictn("Select * from persons")
     path_to_json = temp_json(persons, "temp_table_persons.txt")
     if (pers_id is None and fio is None and login is None and password is None and role is None):
@@ -71,8 +71,8 @@ def get_admins_list():
     delete_json(path_to_json)
     return return_list
 
-@app.post("/insert_person")
-def add_new_person(data=Body()): #Body задаётся через постман, в виде json - ниже парсим его в привычные переменные
+@app.post("/insert_person") # Добавление пользователя через тело пост запроса
+def add_new_person(data=Body()): #Body задаётся через свагер в виде json - ниже парсим его в переменные и инсертим в БД
     fio = data["fio"]
     login = data["login"]
     pwd = data["password"]
@@ -85,16 +85,12 @@ def add_new_person(data=Body()): #Body задаётся через постма�
         reg_status = ('Регистрация прошла успешно!')
     return reg_status
 
-@app.delete("/delete_person")
+@app.delete("/delete_person") #Удаление пользовователя через тело пост запроса
 def delete_person(data=Body()):
     enter_login = data["enter_login"]
-    try:
-        script = ("""delete from public.persons where login like '%s';""" % (enter_login))
-        reqSimp(script)
-    except Exception as owibka:
-        del_result = '--Задайте другой логин - такого пользователя не существует!--'
-    else:
-        del_result = 'Удаление прошло успешно!'
+    script = ("""delete from public.persons where login like '%s';""" % (enter_login))
+    reqSimp(script)
+    del_result = 'Удаление прошло успешно!'
     return del_result
 
 @app.delete("/delete_person/{enter_login}") #Удаление пользовователя - логин передаём в прямо в пути

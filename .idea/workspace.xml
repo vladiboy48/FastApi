@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e98ac9c8-6a35-4c9b-bafa-0bed2caf955f" name="Changes" comment="Четвертый">
-      <change beforePath="$PROJECT_DIR$/.idea/api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e98ac9c8-6a35-4c9b-bafa-0bed2caf955f" name="Changes" comment="1. Добавлены POST и DELETE запросы.&#10;2. Приложены скрипты из postman.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/app/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/app/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -45,6 +43,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kvs48\PycharmProjects\api\.venv" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -93,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746387294078</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="1. Добавлены POST и DELETE запросы.&#10;2. Приложены скрипты из postman.">
+      <option name="closed" value="true" />
+      <created>1746431226689</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746431226689</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,6 +124,7 @@
     <MESSAGE value="Второй" />
     <MESSAGE value="Третий" />
     <MESSAGE value="Четвертый" />
-    <option name="LAST_COMMIT_MESSAGE" value="Четвертый" />
+    <MESSAGE value="1. Добавлены POST и DELETE запросы.&#10;2. Приложены скрипты из postman." />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Добавлены POST и DELETE запросы.&#10;2. Приложены скрипты из postman." />
   </component>
 </project>
